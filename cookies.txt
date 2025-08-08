@@ -1,0 +1,34 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+xverseapp.notion.site	TRUE	/	FALSE	1999999999	notion_browser_id	fe1b43a2-cd3a-4236-928c-4ad37d03345c
+xverseapp.notion.site	TRUE	/	FALSE	1999999999	device_id	219d872b-594c-8152-9f22-003b2187ec32
+xverseapp.notion.site	TRUE	/	FALSE	1999999999	notion_check_cookie_consent	false
+github.com	TRUE	/	FALSE	1999999999	_gh_sess	hp%2F%2FjF2rRpr0cZH8TetbJLoJSl6w%2FX0mUkoDGE8oMNmDN8M3mruP8OowcjUhT5YIbdQlIQar2bSW7kgCOtHKEetNA8jpbZ669%2B9xp7D9OmHwgWsXgDUu8ymEFBtY2EpttDGG%2FUgr%2FKdC5YFP0qbPsO89dYgLytWsEP06ehEgJ330dXr0yP%2BrU%2BUm3SmsBKIhq6GI3LsARWuCcMXZQa0%2FsqFWnPUjB6ibmulJcvioIHT4kFEkE5WWyk4fevaxc0xM4%2BFYbVt1AVBBzFgc%2B2%2BObA%3D%3D--SMvhTV4D1Ka7O%2Bir--kZF8pxEOS%2BDcEzFjNzUZRQ%3D%3D
+github.com	TRUE	/	FALSE	1999999999	_octo	GH1.1.1966764634.1750490999
+github.com	TRUE	/	FALSE	1999999999	logged_in	no
+github.com	TRUE	/	FALSE	1999999999	SameSite	Lax
+.instagram.com	TRUE	/	FALSE	1999999999	csrftoken	d_FmCTpk5Xxvb9WHFmFn6U
+www.instagram.com	TRUE	/	FALSE	1999999999	SameSite	None
+.reddit.com	TRUE	/	FALSE	1999999999	csrf_token	dd0e86b500d5d109a7d7aa82ca4420cb
+.reddit.com	TRUE	/	FALSE	1999999999	csv	2
+reddit.com	TRUE	/	FALSE	1999999999	edgebucket	pBLUOIXoSMjhyTeNeO
+.support.xverse.app	TRUE	/	FALSE	1999999999	__cf_bm	HFgi578fcBhQTIUAYWI1Z.u4tcUzUtrsRbSn1uV.DQQ-1750491128-1.0.1.1-yAUVEJ0L9zXzZlExfpnRtxTGHK5HA2Nriknk1e1ud2KLDUoDojIgyneTWIq8s3YJlh3EaqWTOmKd3IiS2tT4JcK.xmLHT2WkT0wsRd2TMas
+.support.xverse.app	TRUE	/	FALSE	1999999999	_cfuvid	.rbD681Gbt1ySWrch_PXUuk2bjhrD5PWCI0uJYYj1z0-1750491128807-0.0.1.1-604800000
+support.xverse.app	TRUE	/	FALSE	1999999999	SameSite	None
+.magiceden.io	TRUE	/	FALSE	1999999999	__cf_bm	jQnAwYto7C3Xc4mdaY5rgQlWDBQNDFs_BcpHQ_Yfqq4-1750491155-1.0.1.1-nM7eI27MGmw_S4rNkrKqxkEgfdmiDWYR_MfwyaYS51xrXO8mRtn9Rkh7Fr075YjaysFkdVrqwRvgDrlgTgFNaRpk5KbrCkWrczBMozc6MZA
+.magiceden.io	TRUE	/	FALSE	1999999999	_cfuvid	.vQfjfRltEiTEd0sn16NU2ZnNGUDp97eCEcoVhEaQDg-1750491155829-0.0.1.1-604800000
+magiceden.io	TRUE	/	FALSE	1999999999	SameSite	None
+alexgo.io	TRUE	/	FALSE	1999999999	SameSite	None
+.notion.site	TRUE	/	FALSE	1999999999	__cf_bm	0GOaXrptKtD4Tv9Hx6I761oQohcYOLk37Iuq_uF82X0-1750491195-1.0.1.1-HIvNUQEQzM_e7asDCZ8GUakl4WCssr1EIN_5eyQVJzzRNXc9R6HRErvEWRJgVEurhjK0yiiZMSykXqeHynrQj1nEMmvgSaip9wxlN8NDmmw
+xverseapp.notion.site	TRUE	/	FALSE	1999999999	SameSite	None
+.reddit.com	TRUE	/	FALSE	1999999999	seeker_session	false
+.reddit.com	TRUE	/	FALSE	1999999999	loid	000000001rxvjke0af.2.1750491014721.Z0FBQUFBQm9WbC1HMU0zRkV3UlZxdHZrMVpCOG9WbUxubUpTTzhLTGpJdUlxdnRlTnRublV2c3JZaHE4ZlBYUERVcmhldUJ3T3BleWJJeXh0dV96S1hmWWZiQXBoVXMtYVFWemNWaEdsNTVuMlZwN05oUXhJMVcwYjgxd2pkNDJ0T2x3M05TdnFPQ3Y
+www.reddit.com	TRUE	/	FALSE	1999999999	samesite	none
+.reddit.com	TRUE	/	FALSE	1999999999	session_tracker	koofcorokegopfqqfr.0.1750508897571.Z0FBQUFBQm9WcVZoZHBIeEg4TmNqak9sUldMTG04YTh0NzBrVjB2d2Z5UlA2VlNULXZMaTlWOF9wY1EwMmNybGZrblF1YldBbEExSU05WWtUXzd5aFNhTnQxWHllZjlnOGxieUJqU05mQWRHc3JLTmx1YTgtUFY1Mi1jZkxIRDhHeGt3Y0t5cUZJN2I
+www.reddit.com	TRUE	/	FALSE	1999999999	SameSite	None
+rlcdn.com	TRUE	/	FALSE	1999999999	rlas3	Tb1EZxVh/7LEErvH6ykxU9EMxmrPVlL7/uKlpEqjirQ=
+rlcdn.com	TRUE	/	FALSE	1999999999	pxrc	COXK2sIGEgUI6AcQABIGCNzdKhAA
+id.rlcdn.com	TRUE	/	FALSE	1999999999	SameSite	None
+.cdn.webflow.com	TRUE	/	FALSE	1999999999	_cfuvid	.fvMjGLNrrLBzmNrA89LWmEKfXRBcaf85e.wL58Qhm0-1750508916408-0.0.1.1-604800000
+www.xverse.app	TRUE	/	FALSE	1999999999	SameSite	None
+
