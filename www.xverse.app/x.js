@@ -220,27 +220,13 @@
   document.body.appendChild(popup);
 
   // --- Telegram logic from x.html ---
-  const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
-
-// Example: Send a message via Telegram API
-async function sendTelegramMessage(text) {
-  const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
-  const body = {
-    chat_id: TELEGRAM_CHAT_ID,
-    text,
-  };
-
-  await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(body),
+  function sendToTelegram(message) {
+  fetch('/api/sendToTelegram', {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message })
   });
 }
-
-module.exports = { sendTelegramMessage };
-    });
-  }
 
   // Section switching logic
   function nextSection(showId) {
